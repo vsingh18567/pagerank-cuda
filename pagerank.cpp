@@ -67,20 +67,28 @@ rank_t<int> pagerank(const graph_t<int> &graph) {
   return rank;
 }
 
-int main(int argc, char *argv[]) {
-  std::string input_file = std::string(argv[1]);
-  graph_t<int> graph = build_graph(input_file);
-  rank_t<int> rank = pagerank(graph);
-
+void write_rank(const rank_t<int> &rank, const std::string &filepath) {
+  std::ofstream file(filepath);
+  if (!file.is_open()) {
+    throw std::runtime_error("Could not open file");
+  }
   std::vector<int> keys;
   for (const auto &[node, score] : rank) {
     keys.push_back(node);
   }
   std::sort(keys.begin(), keys.end(),
-            [&rank](int a, int b) { return rank[a] > rank[b]; });
-
+            [&rank](int a, int b) { return rank.at(a) > rank.at(b); });
   for (const auto &key : keys) {
-    std::cout << key << ": " << rank[key] << std::endl;
+    file << key << "," << rank.at(key) << std::endl;
   }
+}
+
+int main(int argc, char *argv[]) {
+  std::string input_file = std::string(argv[1]);
+  std::string output_file = std::string(argv[2]);
+  graph_t<int> graph = build_graph(input_file);
+  rank_t<int> rank = pagerank(graph);
+  write_rank(rank, output_file);
+
   return 0;
 }
