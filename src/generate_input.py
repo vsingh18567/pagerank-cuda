@@ -1,14 +1,15 @@
 import random
 import argparse
+from tqdm import tqdm
 
 
 def generate_input(num_nodes: int, num_edges: int, filename: str):
     with open(filename, "w") as f:
-        for i in range(num_edges):
-            u = random.randint(1, num_nodes)
-            v = random.randint(1, num_nodes)
+        for i in tqdm(range(num_edges)):
+            u = random.randint(0, num_nodes - 1)
+            v = random.randint(0, num_nodes - 1)
             while u == v:
-                v = random.randint(1, num_nodes)
+                v = random.randint(0, num_nodes - 1)
             f.write(f"{u},{v}\n")
 
 

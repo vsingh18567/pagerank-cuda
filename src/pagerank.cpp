@@ -6,6 +6,7 @@
 #include <vector>
 
 static constexpr double DAMPING_FACTOR = 0.85;
+static constexpr int MAX_ITERATIONS = 100;
 
 template <typename T> using graph_t = std::unordered_map<T, std::vector<T>>;
 template <typename T> using rank_t = std::unordered_map<T, double>;
@@ -48,7 +49,7 @@ rank_t<int> pagerank(const graph_t<int> &graph) {
   for (const auto &[from, tos] : graph) {
     rank[from] = 1.0 / graph.size();
   }
-  for (int i = 0; i < 100; i++) {
+  for (int i = 0; i < MAX_ITERATIONS; i++) {
     rank_t<int> new_rank;
     for (const auto &[from, tos] : graph) {
       double sum = 0.0;
@@ -84,11 +85,16 @@ void write_rank(const rank_t<int> &rank, const std::string &filepath) {
 }
 
 int main(int argc, char *argv[]) {
+  if (argc < 3) {
+    std::cerr << "Usage: " << argv[0] << " <input_file> <output_file>"
+              << std::endl;
+    return 1;
+  }
   std::string input_file = std::string(argv[1]);
   std::string output_file = std::string(argv[2]);
   graph_t<int> graph = build_graph(input_file);
-  rank_t<int> rank = pagerank(graph);
-  write_rank(rank, output_file);
+  rank_t<int> rank = pagerank(std::move(graph));
+  write_rank(std::move(rank), output_file);
 
   return 0;
 }

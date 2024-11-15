@@ -1,2 +1,7 @@
 .vscode
-pagerank-cpp
+*.dSYM
+bin/
+.venv/
+input.txt
+output*.txt
+outputs/
