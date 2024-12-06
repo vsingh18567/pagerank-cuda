@@ -2,6 +2,7 @@
 1. Uses CSR format to store the graph.
 2. Handles dangling nodes.
 */
+#include <algorithm>
 #include <fstream>
 #include <iostream>
 #include <sstream>
