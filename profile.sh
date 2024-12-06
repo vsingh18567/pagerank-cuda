@@ -15,4 +15,4 @@ time ./bin/pagerank-cpp input.txt outputs/output_cpp.txt
 echo "Running pagerank-optimised"
 time ./bin/pagerank-opt input.txt outputs/output_optimised.txt
 echo "Running pagerank-cuda"
-echo "CUDA not implemented"
+time ./bin/pagerank-cuda input.txt outputs/output_cuda.txt

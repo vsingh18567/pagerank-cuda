@@ -40,6 +40,7 @@ Graph build_graph(const std::string &filepath) {
     if (max_node >= graph.num_nodes) {
       graph.num_nodes = max_node + 1;
     }
+    // std::cout << "from: " << from << " to: " << to << std::endl;
     graph.num_edges++;
     adj_incoming.resize(graph.num_nodes);
     adj_incoming[to].push_back(from);
@@ -72,10 +73,8 @@ std::vector<double> pagerank(const Graph &graph) {
         dangling_sum += rank[i];
       }
     }
-    double dangling_contrib =
-        (1 - DAMPING_FACTOR + DAMPING_FACTOR * dangling_sum) / graph.num_nodes;
     for (int i = 0; i < graph.num_nodes; i++) {
-      double sum = dangling_contrib;
+      double sum = (dangling_sum / graph.num_nodes);
       for (int j = graph.row_offsets[i]; j < graph.row_offsets[i + 1]; j++) {
         if (graph.out_degree[graph.col_indicies[j]] == 0) {
           continue;
