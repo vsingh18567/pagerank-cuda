@@ -50,7 +50,6 @@ __global__ void compute_dangling_sum(int num_nodes, int *out_degrees,
     __syncthreads();
   }
 
-  // Write result from each block to global memory
   if (tid == 0) {
     atomicAdd(dangling_contrib, sdata[0]);
   }
@@ -79,7 +78,6 @@ void build_graph(const std::string &filepath, int &num_nodes, int &num_edges,
     std::getline(ss, token, ',');
     int to = std::stoi(token);
 
-    // Map node IDs to indices
     if (node_id_to_index.find(from) == node_id_to_index.end()) {
       node_id_to_index[from] = num_nodes++;
       node_ids.push_back(from);
@@ -96,15 +94,12 @@ void build_graph(const std::string &filepath, int &num_nodes, int &num_edges,
     int from_idx = node_id_to_index[from];
     int to_idx = node_id_to_index[to];
 
-    // Build adjacency list of incoming edges
     adj_incoming[to_idx].push_back(from_idx);
     num_edges++;
 
-    // Increment out-degree of 'from' node
     out_degrees_temp[from_idx]++;
   }
 
-  // Build CSR arrays
   row_offsets.resize(num_nodes + 1);
   row_offsets[0] = 0;
   for (int i = 0; i < num_nodes; ++i) {
@@ -128,12 +123,10 @@ void write_rank(const std::vector<int> &node_ids,
   if (!file.is_open()) {
     throw std::runtime_error("Could not open file");
   }
-  // Create a vector of indices
   std::vector<int> indices(rank.size());
   for (int i = 0; i < rank.size(); ++i) {
     indices[i] = i;
   }
-  // Sort indices based on rank
   std::sort(indices.begin(), indices.end(),
             [&rank](int a, int b) { return rank[a] > rank[b]; });
   for (const auto &idx : indices) {
@@ -168,51 +161,41 @@ int main(int argc, char *argv[]) {
   cudaMemcpy(d_out_degrees, out_degrees.data(), num_nodes * sizeof(int),
              cudaMemcpyHostToDevice);
 
-  // Initialize rank_old
   double initial_rank = 1.0 / num_nodes;
   std::vector<double> rank_old(num_nodes, initial_rank);
   cudaMemcpy(d_rank_old, rank_old.data(), num_nodes * sizeof(double),
              cudaMemcpyHostToDevice);
 
-  // PageRank iterations
   int max_iters = 100;
   int block_size = 256;
   int grid_size = (num_nodes + block_size - 1) / block_size;
 
   for (int iter = 0; iter < max_iters; ++iter) {
-    // Reset dangling_contrib to zero
     double zero = 0.0;
     cudaMemcpy(d_dangling_contrib, &zero, sizeof(double),
                cudaMemcpyHostToDevice);
 
-    // Compute dangling sum
     compute_dangling_sum<<<grid_size, block_size>>>(
         num_nodes, d_out_degrees, d_rank_old, d_dangling_contrib);
     cudaDeviceSynchronize();
 
-    // Copy dangling_contrib back to host
     double dangling_contrib;
     cudaMemcpy(&dangling_contrib, d_dangling_contrib, sizeof(double),
                cudaMemcpyDeviceToHost);
 
-    // PageRank kernel
     pagerank_kernel<<<grid_size, block_size>>>(
         num_nodes, d_row_offsets, d_col_indices, d_out_degrees, d_rank_old,
         d_rank_new, dangling_contrib);
     cudaDeviceSynchronize();
 
-    // Swap rank_old and rank_new
     std::swap(d_rank_old, d_rank_new);
   }
 
-  // Copy ranks back to host
   cudaMemcpy(rank_old.data(), d_rank_old, num_nodes * sizeof(double),
              cudaMemcpyDeviceToHost);
 
-  // Write ranks to output file
   write_rank(node_ids, rank_old, output_file);
 
-  // Free device memory
   cudaFree(d_row_offsets);
   cudaFree(d_col_indices);
   cudaFree(d_out_degrees);
