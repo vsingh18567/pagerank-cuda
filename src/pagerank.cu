@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <chrono>
 #include <cuda_runtime.h>
 #include <fstream>
 #include <iostream>
@@ -135,7 +136,8 @@ void write_rank(const std::vector<int> &node_ids,
 }
 
 int main(int argc, char *argv[]) {
-  std::string input_file = std::string(argv[1]);
+  auto start = std::chrono::high_resolution_clock::now();
+  std::cout std::string input_file = std::string(argv[1]);
   std::string output_file = std::string(argv[2]);
 
   int num_nodes, num_edges;
@@ -143,7 +145,6 @@ int main(int argc, char *argv[]) {
   build_graph(input_file, num_nodes, num_edges, row_offsets, col_indices,
               out_degrees, node_ids);
 
-  // Allocate device memory
   int *d_row_offsets, *d_col_indices, *d_out_degrees;
   double *d_rank_old, *d_rank_new, *d_dangling_contrib;
   cudaMalloc(&d_row_offsets, (num_nodes + 1) * sizeof(int));
@@ -153,7 +154,6 @@ int main(int argc, char *argv[]) {
   cudaMalloc(&d_rank_new, num_nodes * sizeof(double));
   cudaMalloc(&d_dangling_contrib, sizeof(double));
 
-  // Copy data to device
   cudaMemcpy(d_row_offsets, row_offsets.data(), (num_nodes + 1) * sizeof(int),
              cudaMemcpyHostToDevice);
   cudaMemcpy(d_col_indices, col_indices.data(), num_edges * sizeof(int),
@@ -169,7 +169,11 @@ int main(int argc, char *argv[]) {
   int max_iters = 100;
   int block_size = 256;
   int grid_size = (num_nodes + block_size - 1) / block_size;
-
+  auto preamble_time = std::chrono::high_resolution_clock::now();
+  auto preamble_time_seconds =
+      std::chrono::duration_cast<std::chrono::milliseconds>(preamble_time -
+                                                            start)
+          .count();
   for (int iter = 0; iter < max_iters; ++iter) {
     double zero = 0.0;
     cudaMemcpy(d_dangling_contrib, &zero, sizeof(double),
@@ -190,7 +194,11 @@ int main(int argc, char *argv[]) {
 
     std::swap(d_rank_old, d_rank_new);
   }
-
+  auto main_loop_time = std::chrono::high_resolution_clock::now();
+  auto main_loop_time_seconds =
+      std::chrono::duration_cast<std::chrono::milliseconds>(main_loop_time -
+                                                            preamble_time)
+          .count();
   cudaMemcpy(rank_old.data(), d_rank_old, num_nodes * sizeof(double),
              cudaMemcpyDeviceToHost);
 
@@ -202,6 +210,16 @@ int main(int argc, char *argv[]) {
   cudaFree(d_rank_old);
   cudaFree(d_rank_new);
   cudaFree(d_dangling_contrib);
-
+  auto end = std::chrono::high_resolution_clock::now();
+  auto total_time_seconds =
+      std::chrono::duration_cast<std::chrono::milliseconds>(end - start)
+          .count();
+  auto write_time_seconds =
+      total_time_seconds - preamble_time_seconds - main_loop_time_seconds;
+  std::cout << "Preamble time: " << preamble_time_seconds << " ms" << std::endl;
+  std::cout << "Main loop time: " << main_loop_time_seconds << " ms"
+            << std::endl;
+  std::cout << "Write time: " << write_time_seconds << " ms" << std::endl;
+  std::cout << "Total time: " << total_time_seconds << " ms" << std::endl;
   return 0;
 }

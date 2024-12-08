@@ -3,6 +3,7 @@
 2. Handles dangling nodes.
 */
 #include <algorithm>
+#include <chrono>
 #include <fstream>
 #include <iostream>
 #include <sstream>
@@ -113,9 +114,34 @@ int main(int argc, char *argv[]) {
               << std::endl;
     return 1;
   }
+  auto start = std::chrono::high_resolution_clock::now();
   std::string input_file = std::string(argv[1]);
   std::string output_file = std::string(argv[2]);
   Graph graph = build_graph(input_file);
+  auto preamble = std::chrono::high_resolution_clock::now();
   std::vector<double> rank = pagerank(std::move(graph));
+  auto main_algo = std::chrono::high_resolution_clock::now();
   write_rank(std::move(rank), output_file);
+  auto write_output = std::chrono::high_resolution_clock::now();
+  std::cout << "Preamble: "
+            << std::chrono::duration_cast<std::chrono::milliseconds>(preamble -
+                                                                     start)
+                   .count()
+            << "ms\n";
+  std::cout << "Main Algorithm: "
+            << std::chrono::duration_cast<std::chrono::milliseconds>(main_algo -
+                                                                     preamble)
+                   .count()
+            << "ms\n";
+  std::cout << "Write Output: "
+            << std::chrono::duration_cast<std::chrono::milliseconds>(
+                   write_output - main_algo)
+                   .count()
+            << "ms\n";
+  std::cout << "Total: "
+            << std::chrono::duration_cast<std::chrono::milliseconds>(
+                   write_output - start)
+                   .count()
+            << "ms\n";
+  return 0;
 }
