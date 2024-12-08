@@ -137,7 +137,7 @@ void write_rank(const std::vector<int> &node_ids,
 
 int main(int argc, char *argv[]) {
   auto start = std::chrono::high_resolution_clock::now();
-  std::cout std::string input_file = std::string(argv[1]);
+  std::string input_file = std::string(argv[1]);
   std::string output_file = std::string(argv[2]);
 
   int num_nodes, num_edges;
