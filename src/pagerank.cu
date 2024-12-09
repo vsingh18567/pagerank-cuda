@@ -216,10 +216,10 @@ int main(int argc, char *argv[]) {
           .count();
   auto write_time_seconds =
       total_time_seconds - preamble_time_seconds - main_loop_time_seconds;
-  std::cout << "Preamble time: " << preamble_time_seconds << " ms" << std::endl;
-  std::cout << "Main loop time: " << main_loop_time_seconds << " ms"
+  std::cout << "Preamble: " << preamble_time_seconds << " ms" << std::endl;
+  std::cout << "Main Algorithm: " << main_loop_time_seconds << " ms"
             << std::endl;
-  std::cout << "Write time: " << write_time_seconds << " ms" << std::endl;
-  std::cout << "Total time: " << total_time_seconds << " ms" << std::endl;
+  std::cout << "Write Output: " << write_time_seconds << " ms" << std::endl;
+  std::cout << "Total: " << total_time_seconds << " ms" << std::endl;
   return 0;
 }
