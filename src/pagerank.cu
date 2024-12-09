@@ -43,7 +43,6 @@ __global__ void compute_dangling_sum(int num_nodes, int *out_degrees,
   sdata[tid] = my_sum;
   __syncthreads();
 
-  // Reduction in shared memory
   for (unsigned int s = blockDim.x / 2; s > 0; s >>= 1) {
     if (tid < s) {
       sdata[tid] += sdata[tid + s];
