@@ -1,0 +1,525 @@
+Starting Profile Runs
+Date: Mon Dec  9 00:24:53 UTC 2024
+-------------------------------------
+
+===== BEGIN STANDARD SET =====
+
+Running tests for N=10000, E=50000 [STANDARD SET]
+Parameters: N=10000, E=50000, Sparsity=5.00000000e-04
+Running pagerank-cpp (Naive CPU)...
+Preamble: 31ms
+Main Algorithm: 213ms
+Write Output: 8ms
+Total: 254ms
+Running pagerank-opt (Optimized CPU)...
+Preamble: 28ms
+Main Algorithm: 13ms
+Write Output: 6ms
+Total: 48ms
+Running pagerank-cuda (CUDA)...
+Preamble: 356 ms
+Main Algorithm: 3 ms
+Write Output: 36 ms
+Total: 395 ms
+------------------------------------------------
+
+Running tests for N=10000, E=200000 [STANDARD SET]
+Parameters: N=10000, E=200000, Sparsity=2.00000000e-03
+Running pagerank-cpp (Naive CPU)...
+Preamble: 117ms
+Main Algorithm: 675ms
+Write Output: 8ms
+Total: 802ms
+Running pagerank-opt (Optimized CPU)...
+Preamble: 107ms
+Main Algorithm: 30ms
+Write Output: 6ms
+Total: 144ms
+Running pagerank-cuda (CUDA)...
+Preamble: 481 ms
+Main Algorithm: 5 ms
+Write Output: 32 ms
+Total: 518 ms
+------------------------------------------------
+
+Running tests for N=10000, E=1000000 [STANDARD SET]
+Parameters: N=10000, E=1000000, Sparsity=1.00000000e-02
+Running pagerank-cpp (Naive CPU)...
+Preamble: 571ms
+Main Algorithm: 3087ms
+Write Output: 9ms
+Total: 3668ms
+Running pagerank-opt (Optimized CPU)...
+Preamble: 530ms
+Main Algorithm: 134ms
+Write Output: 5ms
+Total: 670ms
+Running pagerank-cuda (CUDA)...
+Preamble: 1414 ms
+Main Algorithm: 16 ms
+Write Output: 45 ms
+Total: 1475 ms
+------------------------------------------------
+
+Running tests for N=50000, E=50000 [STANDARD SET]
+Parameters: N=50000, E=50000, Sparsity=2.00000000e-05
+Running pagerank-cpp (Naive CPU)...
+Preamble: 38ms
+Main Algorithm: 611ms
+Write Output: 43ms
+Total: 694ms
+Running pagerank-opt (Optimized CPU)...
+Preamble: 31ms
+Main Algorithm: 65ms
+Write Output: 29ms
+Total: 126ms
+Running pagerank-cuda (CUDA)...
+Preamble: 300 ms
+Main Algorithm: 5 ms
+Write Output: 128 ms
+Total: 433 ms
+------------------------------------------------
+
+Running tests for N=50000, E=200000 [STANDARD SET]
+Parameters: N=50000, E=200000, Sparsity=8.00000000e-05
+Running pagerank-cpp (Naive CPU)...
+Preamble: 143ms
+Main Algorithm: 1532ms
+Write Output: 53ms
+Total: 1729ms
+Running pagerank-opt (Optimized CPU)...
+Preamble: 116ms
+Main Algorithm: 70ms
+Write Output: 31ms
+Total: 218ms
+Running pagerank-cuda (CUDA)...
+Preamble: 604 ms
+Main Algorithm: 8 ms
+Write Output: 160 ms
+Total: 772 ms
+------------------------------------------------
+
+Running tests for N=50000, E=1000000 [STANDARD SET]
+Parameters: N=50000, E=1000000, Sparsity=4.00000000e-04
+Running pagerank-cpp (Naive CPU)...
+Preamble: 644ms
+Main Algorithm: 5945ms
+Write Output: 53ms
+Total: 6644ms
+Running pagerank-opt (Optimized CPU)...
+Preamble: 552ms
+Main Algorithm: 183ms
+Write Output: 31ms
+Total: 767ms
+Running pagerank-cuda (CUDA)...
+Preamble: 1597 ms
+Main Algorithm: 21 ms
+Write Output: 158 ms
+Total: 1776 ms
+------------------------------------------------
+
+Running tests for N=100000, E=50000 [STANDARD SET]
+Parameters: N=100000, E=50000, Sparsity=5.00000000e-06
+Running pagerank-cpp (Naive CPU)...
+Preamble: 41ms
+Main Algorithm: 986ms
+Write Output: 62ms
+Total: 1090ms
+Running pagerank-opt (Optimized CPU)...
+Preamble: 32ms
+Main Algorithm: 106ms
+Write Output: 54ms
+Total: 193ms
+Running pagerank-cuda (CUDA)...
+Preamble: 375 ms
+Main Algorithm: 5 ms
+Write Output: 186 ms
+Total: 566 ms
+------------------------------------------------
+
+Running tests for N=100000, E=200000 [STANDARD SET]
+Parameters: N=100000, E=200000, Sparsity=2.00000000e-05
+Running pagerank-cpp (Naive CPU)...
+Preamble: 156ms
+Main Algorithm: 2589ms
+Write Output: 101ms
+Total: 2847ms
+Running pagerank-opt (Optimized CPU)...
+Preamble: 118ms
+Main Algorithm: 132ms
+Write Output: 63ms
+Total: 315ms
+Running pagerank-cuda (CUDA)...
+Preamble: 661 ms
+Main Algorithm: 11 ms
+Write Output: 305 ms
+Total: 977 ms
+------------------------------------------------
+
+Running tests for N=100000, E=1000000 [STANDARD SET]
+Parameters: N=100000, E=1000000, Sparsity=1.00000000e-04
+Running pagerank-cpp (Naive CPU)...
+Preamble: 714ms
+Main Algorithm: 9065ms
+Write Output: 143ms
+Total: 9924ms
+Running pagerank-opt (Optimized CPU)...
+Preamble: 571ms
+Main Algorithm: 269ms
+Write Output: 63ms
+Total: 904ms
+Running pagerank-cuda (CUDA)...
+Preamble: 1862 ms
+Main Algorithm: 22 ms
+Write Output: 336 ms
+Total: 2220 ms
+------------------------------------------------
+===== END STANDARD SET =====
+
+===== BEGIN DENSE SET =====
+
+Running tests for N=10000, E=2000000 [DENSE SET]
+Parameters: N=10000, E=2000000, Sparsity=2.00000000e-02
+Running pagerank-cpp (Naive CPU)...
+Preamble: 1122ms
+Main Algorithm: 6122ms
+Write Output: 8ms
+Total: 7254ms
+Running pagerank-opt (Optimized CPU)...
+Preamble: 1044ms
+Main Algorithm: 266ms
+Write Output: 6ms
+Total: 1318ms
+Running pagerank-cuda (CUDA)...
+Preamble: 2498 ms
+Main Algorithm: 32 ms
+Write Output: 31 ms
+Total: 2561 ms
+------------------------------------------------
+
+Running tests for N=10000, E=5000000 [DENSE SET]
+Parameters: N=10000, E=5000000, Sparsity=5.00000000e-02
+Running pagerank-cpp (Naive CPU)...
+Preamble: 2835ms
+Main Algorithm: 14936ms
+Write Output: 8ms
+Total: 17780ms
+Running pagerank-opt (Optimized CPU)...
+Preamble: 2629ms
+Main Algorithm: 658ms
+Write Output: 5ms
+Total: 3293ms
+Running pagerank-cuda (CUDA)...
+Preamble: 5824 ms
+Main Algorithm: 74 ms
+Write Output: 31 ms
+Total: 5929 ms
+------------------------------------------------
+
+Running tests for N=10000, E=10000000 [DENSE SET]
+Parameters: N=10000, E=10000000, Sparsity=1.00000000e-01
+Running pagerank-cpp (Naive CPU)...
+Preamble: 5758ms
+Main Algorithm: 29385ms
+Write Output: 8ms
+Total: 35152ms
+Running pagerank-opt (Optimized CPU)...
+Preamble: 5262ms
+Main Algorithm: 1325ms
+Write Output: 5ms
+Total: 6593ms
+Running pagerank-cuda (CUDA)...
+Preamble: 11227 ms
+Main Algorithm: 148 ms
+Write Output: 37 ms
+Total: 11412 ms
+------------------------------------------------
+
+Running tests for N=50000, E=2000000 [DENSE SET]
+Parameters: N=50000, E=2000000, Sparsity=8.00000000e-04
+Running pagerank-cpp (Naive CPU)...
+Preamble: 1325ms
+Main Algorithm: 11127ms
+Write Output: 54ms
+Total: 12507ms
+Running pagerank-opt (Optimized CPU)...
+Preamble: 1093ms
+Main Algorithm: 329ms
+Write Output: 31ms
+Total: 1453ms
+Running pagerank-cuda (CUDA)...
+Preamble: 2805 ms
+Main Algorithm: 56 ms
+Write Output: 161 ms
+Total: 3022 ms
+------------------------------------------------
+
+Running tests for N=50000, E=5000000 [DENSE SET]
+Parameters: N=50000, E=5000000, Sparsity=2.00000000e-03
+Running pagerank-cpp (Naive CPU)...
+Preamble: 3237ms
+Main Algorithm: 26896ms
+Write Output: 55ms
+Total: 30189ms
+Running pagerank-opt (Optimized CPU)...
+Preamble: 2743ms
+Main Algorithm: 767ms
+Write Output: 31ms
+Total: 3541ms
+Running pagerank-cuda (CUDA)...
+Preamble: 6560 ms
+Main Algorithm: 149 ms
+Write Output: 160 ms
+Total: 6869 ms
+------------------------------------------------
+
+Running tests for N=50000, E=10000000 [DENSE SET]
+Parameters: N=50000, E=10000000, Sparsity=4.00000000e-03
+Running pagerank-cpp (Naive CPU)...
+Preamble: 6406ms
+Main Algorithm: 53239ms
+Write Output: 58ms
+Total: 59703ms
+Running pagerank-opt (Optimized CPU)...
+Preamble: 5484ms
+Main Algorithm: 1484ms
+Write Output: 31ms
+Total: 6999ms
+Running pagerank-cuda (CUDA)...
+Preamble: 12451 ms
+Main Algorithm: 319 ms
+Write Output: 154 ms
+Total: 12924 ms
+------------------------------------------------
+
+Running tests for N=100000, E=2000000 [DENSE SET]
+Parameters: N=100000, E=2000000, Sparsity=2.00000000e-04
+Running pagerank-cpp (Naive CPU)...
+Preamble: 1399ms
+Main Algorithm: 14422ms
+Write Output: 131ms
+Total: 15953ms
+Running pagerank-opt (Optimized CPU)...
+Preamble: 1122ms
+Main Algorithm: 477ms
+Write Output: 54ms
+Total: 1655ms
+Running pagerank-cuda (CUDA)...
+Preamble: 3084 ms
+Main Algorithm: 38 ms
+Write Output: 310 ms
+Total: 3432 ms
+------------------------------------------------
+
+Running tests for N=100000, E=5000000 [DENSE SET]
+Parameters: N=100000, E=5000000, Sparsity=5.00000000e-04
+Running pagerank-cpp (Naive CPU)...
+Preamble: 3547ms
+Main Algorithm: 31896ms
+Write Output: 130ms
+Total: 35574ms
+Running pagerank-opt (Optimized CPU)...
+Preamble: 2845ms
+Main Algorithm: 1252ms
+Write Output: 55ms
+Total: 4153ms
+Running pagerank-cuda (CUDA)...
+Preamble: 6919 ms
+Main Algorithm: 143 ms
+Write Output: 312 ms
+Total: 7374 ms
+------------------------------------------------
+
+Running tests for N=100000, E=10000000 [DENSE SET]
+Parameters: N=100000, E=10000000, Sparsity=1.00000000e-03
+Running pagerank-cpp (Naive CPU)...
+Preamble: 6969ms
+Main Algorithm: 62107ms
+Write Output: 130ms
+Total: 69208ms
+Running pagerank-opt (Optimized CPU)...
+Preamble: 5674ms
+Main Algorithm: 2870ms
+Write Output: 55ms
+Total: 8600ms
+Running pagerank-cuda (CUDA)...
+Preamble: 13423 ms
+Main Algorithm: 312 ms
+Write Output: 314 ms
+Total: 14049 ms
+------------------------------------------------
+===== END DENSE SET =====
+
+===== BEGIN HIGHLY SPARSE SET =====
+
+Running tests for N=10000, E=5000 [HIGHLY SPARSE SET]
+Parameters: N=10000, E=5000, Sparsity=5.00000000e-05
+Running pagerank-cpp (Naive CPU)...
+Preamble: 3ms
+Main Algorithm: 54ms
+Write Output: 5ms
+Total: 63ms
+Running pagerank-opt (Optimized CPU)...
+Preamble: 3ms
+Main Algorithm: 8ms
+Write Output: 5ms
+Total: 17ms
+Running pagerank-cuda (CUDA)...
+Preamble: 200 ms
+Main Algorithm: 2 ms
+Write Output: 19 ms
+Total: 221 ms
+------------------------------------------------
+
+Running tests for N=10000, E=20000 [HIGHLY SPARSE SET]
+Parameters: N=10000, E=20000, Sparsity=2.00000000e-04
+Running pagerank-cpp (Naive CPU)...
+Preamble: 12ms
+Main Algorithm: 113ms
+Write Output: 7ms
+Total: 134ms
+Running pagerank-opt (Optimized CPU)...
+Preamble: 11ms
+Main Algorithm: 11ms
+Write Output: 5ms
+Total: 28ms
+Running pagerank-cuda (CUDA)...
+Preamble: 198 ms
+Main Algorithm: 3 ms
+Write Output: 35 ms
+Total: 236 ms
+------------------------------------------------
+
+Running tests for N=10000, E=50000 [HIGHLY SPARSE SET]
+Parameters: N=10000, E=50000, Sparsity=5.00000000e-04
+Running pagerank-cpp (Naive CPU)...
+Preamble: 31ms
+Main Algorithm: 217ms
+Write Output: 9ms
+Total: 257ms
+Running pagerank-opt (Optimized CPU)...
+Preamble: 28ms
+Main Algorithm: 13ms
+Write Output: 5ms
+Total: 47ms
+Running pagerank-cuda (CUDA)...
+Preamble: 257 ms
+Main Algorithm: 3 ms
+Write Output: 30 ms
+Total: 290 ms
+------------------------------------------------
+
+Running tests for N=50000, E=5000 [HIGHLY SPARSE SET]
+Parameters: N=50000, E=5000, Sparsity=2.00000000e-06
+Running pagerank-cpp (Naive CPU)...
+Preamble: 4ms
+Main Algorithm: 97ms
+Write Output: 7ms
+Total: 108ms
+Running pagerank-opt (Optimized CPU)...
+Preamble: 4ms
+Main Algorithm: 20ms
+Write Output: 24ms
+Total: 49ms
+Running pagerank-cuda (CUDA)...
+Preamble: 187 ms
+Main Algorithm: 2 ms
+Write Output: 33 ms
+Total: 222 ms
+------------------------------------------------
+
+Running tests for N=50000, E=20000 [HIGHLY SPARSE SET]
+Parameters: N=50000, E=20000, Sparsity=8.00000000e-06
+Running pagerank-cpp (Naive CPU)...
+Preamble: 16ms
+Main Algorithm: 323ms
+Write Output: 25ms
+Total: 364ms
+Running pagerank-opt (Optimized CPU)...
+Preamble: 13ms
+Main Algorithm: 45ms
+Write Output: 25ms
+Total: 84ms
+Running pagerank-cuda (CUDA)...
+Preamble: 235 ms
+Main Algorithm: 3 ms
+Write Output: 86 ms
+Total: 324 ms
+------------------------------------------------
+
+Running tests for N=50000, E=50000 [HIGHLY SPARSE SET]
+Parameters: N=50000, E=50000, Sparsity=2.00000000e-05
+Running pagerank-cpp (Naive CPU)...
+Preamble: 39ms
+Main Algorithm: 612ms
+Write Output: 43ms
+Total: 695ms
+Running pagerank-opt (Optimized CPU)...
+Preamble: 30ms
+Main Algorithm: 65ms
+Write Output: 26ms
+Total: 122ms
+Running pagerank-cuda (CUDA)...
+Preamble: 298 ms
+Main Algorithm: 5 ms
+Write Output: 131 ms
+Total: 434 ms
+------------------------------------------------
+
+Running tests for N=100000, E=5000 [HIGHLY SPARSE SET]
+Parameters: N=100000, E=5000, Sparsity=5.00000000e-07
+Running pagerank-cpp (Naive CPU)...
+Preamble: 4ms
+Main Algorithm: 95ms
+Write Output: 7ms
+Total: 107ms
+Running pagerank-opt (Optimized CPU)...
+Preamble: 5ms
+Main Algorithm: 34ms
+Write Output: 55ms
+Total: 95ms
+Running pagerank-cuda (CUDA)...
+Preamble: 203 ms
+Main Algorithm: 2 ms
+Write Output: 41 ms
+Total: 246 ms
+------------------------------------------------
+
+Running tests for N=100000, E=20000 [HIGHLY SPARSE SET]
+Parameters: N=100000, E=20000, Sparsity=2.00000000e-06
+Running pagerank-cpp (Naive CPU)...
+Preamble: 16ms
+Main Algorithm: 435ms
+Write Output: 32ms
+Total: 484ms
+Running pagerank-opt (Optimized CPU)...
+Preamble: 14ms
+Main Algorithm: 59ms
+Write Output: 50ms
+Total: 124ms
+Running pagerank-cuda (CUDA)...
+Preamble: 245 ms
+Main Algorithm: 3 ms
+Write Output: 95 ms
+Total: 343 ms
+------------------------------------------------
+
+Running tests for N=100000, E=50000 [HIGHLY SPARSE SET]
+Parameters: N=100000, E=50000, Sparsity=5.00000000e-06
+Running pagerank-cpp (Naive CPU)...
+Preamble: 41ms
+Main Algorithm: 978ms
+Write Output: 62ms
+Total: 1082ms
+Running pagerank-opt (Optimized CPU)...
+Preamble: 32ms
+Main Algorithm: 106ms
+Write Output: 54ms
+Total: 193ms
+Running pagerank-cuda (CUDA)...
+Preamble: 311 ms
+Main Algorithm: 5 ms
+Write Output: 187 ms
+Total: 503 ms
+------------------------------------------------
+===== END HIGHLY SPARSE SET =====
